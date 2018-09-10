@@ -1,0 +1,70 @@
+<div>
+    <h2 id="page-heading">
+        <span>Contributions</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-contribution" [routerLink]="['/contribution/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Contribution
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="contributions">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Currency</span></th>
+            <th><span>Amount</span></th>
+            <th><span>Date</span></th>
+            <th><span>Fee</span></th>
+            <th><span>Status</span></th>
+            <th><span>Pay Key</span></th>
+            <th><span>Preapproval</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let contribution of contributions ;trackBy: trackId">
+                <td><a [routerLink]="['/contribution', contribution.id, 'view' ]">{{contribution.id}}</a></td>
+                <td>{{contribution.currency}}</td>
+                <td>{{contribution.amount}}</td>
+                <td>{{contribution.date | date:'medium'}}</td>
+                <td>{{contribution.fee}}</td>
+                <td>{{contribution.status}}</td>
+                <td>{{contribution.payKey}}</td>
+                <td>
+                    <div *ngIf="contribution.preapprovalId">
+                        <a [routerLink]="['../preapproval', contribution.preapprovalId , 'view' ]" >{{contribution.preapprovalName}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/contribution', contribution.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/contribution', contribution.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'contribution/'+ contribution.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

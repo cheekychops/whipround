@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Whipround.
+    -->
+    <changeSet id="20180910145607-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="whiprounds_id"
+                                 baseTableName="whipround_contribution"
+                                 constraintName="fk_whipround_contribution_whiprounds_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="whipround"/>
+        <addForeignKeyConstraint baseColumnNames="contributions_id"
+                                 baseTableName="whipround_contribution"
+                                 constraintName="fk_whipround_contribution_contributions_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contribution"/>
+        
+    </changeSet>
+</databaseChangeLog>

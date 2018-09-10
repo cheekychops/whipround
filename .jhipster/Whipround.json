@@ -1,0 +1,52 @@
+{
+    "name": "Whipround",
+    "fields": [
+        {
+            "fieldName": "invitation",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "imageUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "startDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "WhiproundStatus",
+            "fieldValues": "PENDING,ACTIVE,DELETED,EXPIRED"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "whipround",
+            "relationshipName": "contribution",
+            "otherEntityName": "contribution",
+            "otherEntityField": "title",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "organiser",
+            "otherEntityName": "person",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "whipround"
+        }
+    ],
+    "changelogDate": "20180910145607",
+    "entityTableName": "whipround",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="person">
+            <h2><span>Person</span> {{person.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>User</span></dt>
+                <dd>
+                    {{person.userLogin}}
+                </dd>
+                <dt><span>Contribution</span></dt>
+                <dd>
+                    <span *ngFor="let contribution of person.contributions; let last = last">
+                        <a [routerLink]="['/contribution', contribution?.id, 'view' ]">{{contribution.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span>Whipround</span></dt>
+                <dd>
+                    <span *ngFor="let whipround of person.whiprounds; let last = last">
+                        <a [routerLink]="['/whipround', whipround?.id, 'view' ]">{{whipround.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/person', person.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

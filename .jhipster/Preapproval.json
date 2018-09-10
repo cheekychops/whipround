@@ -1,0 +1,27 @@
+{
+    "name": "Preapproval",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "contribution",
+            "otherEntityName": "contribution",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "preapproval"
+        }
+    ],
+    "changelogDate": "20180910145609",
+    "entityTableName": "preapproval",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
