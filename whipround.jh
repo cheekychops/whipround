@@ -1,0 +1,50 @@
+entity Whipround {
+	invitation String,
+    imageUrl String,
+    startDate ZonedDateTime,
+    endDate ZonedDateTime,
+    status WhiproundStatus,
+}
+
+entity Contribution {
+	currency Currency,
+	amount BigDecimal,
+    date ZonedDateTime,
+    fee BigDecimal,
+    status ContributionStatus,
+    payKey String
+}
+
+entity Preapproval {
+	name String
+}
+
+entity Person {
+}
+
+enum Currency {
+	GBP
+}
+
+enum WhiproundStatus {
+	PENDING, ACTIVE, DELETED, EXPIRED
+}
+
+enum ContributionStatus {
+	COLLECTED, PENDING_APPROVAL, APPROVED
+}
+
+relationship ManyToMany {
+	Whipround{contribution(title)} to Contribution{whipround},
+    Person{contribution} to Contribution{contributor},
+    Person{whipround} to Whipround{organiser}
+}
+
+relationship OneToOne {
+	Contribution{preapproval(name)} to Preapproval{contribution},
+	Person{user(login)} to User{person}
+}
+
+paginate Whipround with infinite-scroll
+dto * with mapstruct
+service all with serviceImpl

@@ -38,6 +38,16 @@ public class CacheConfiguration {
             cm.createCache(org.cheekylogic.whipround.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(org.cheekylogic.whipround.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(org.cheekylogic.whipround.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(org.cheekylogic.whipround.domain.Whipround.class.getName(), jcacheConfiguration);
+            cm.createCache(org.cheekylogic.whipround.domain.Whipround.class.getName() + ".contributions", jcacheConfiguration);
+            cm.createCache(org.cheekylogic.whipround.domain.Whipround.class.getName() + ".organisers", jcacheConfiguration);
+            cm.createCache(org.cheekylogic.whipround.domain.Contribution.class.getName(), jcacheConfiguration);
+            cm.createCache(org.cheekylogic.whipround.domain.Contribution.class.getName() + ".whiprounds", jcacheConfiguration);
+            cm.createCache(org.cheekylogic.whipround.domain.Contribution.class.getName() + ".contributors", jcacheConfiguration);
+            cm.createCache(org.cheekylogic.whipround.domain.Preapproval.class.getName(), jcacheConfiguration);
+            cm.createCache(org.cheekylogic.whipround.domain.Person.class.getName(), jcacheConfiguration);
+            cm.createCache(org.cheekylogic.whipround.domain.Person.class.getName() + ".contributions", jcacheConfiguration);
+            cm.createCache(org.cheekylogic.whipround.domain.Person.class.getName() + ".whiprounds", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -1,0 +1,64 @@
+{
+    "name": "Contribution",
+    "fields": [
+        {
+            "fieldName": "currency",
+            "fieldType": "Currency",
+            "fieldValues": "GBP"
+        },
+        {
+            "fieldName": "amount",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "fee",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "ContributionStatus",
+            "fieldValues": "COLLECTED,PENDING_APPROVAL,APPROVED"
+        },
+        {
+            "fieldName": "payKey",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "preapproval",
+            "otherEntityName": "preapproval",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "contribution"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "whipround",
+            "otherEntityName": "whipround",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "contribution"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "contributor",
+            "otherEntityName": "person",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "contribution"
+        }
+    ],
+    "changelogDate": "20180910145608",
+    "entityTableName": "contribution",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

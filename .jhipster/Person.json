@@ -1,0 +1,39 @@
+{
+    "name": "Person",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "person"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "contributor",
+            "relationshipName": "contribution",
+            "otherEntityName": "contribution",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "organiser",
+            "relationshipName": "whipround",
+            "otherEntityName": "whipround",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20180910145610",
+    "entityTableName": "person",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

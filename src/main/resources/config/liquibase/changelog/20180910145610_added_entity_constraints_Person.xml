@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Person.
+    -->
+    <changeSet id="20180910145610-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="person"
+                                 constraintName="fk_person_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="people_id"
+                                 baseTableName="person_contribution"
+                                 constraintName="fk_person_contribution_people_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+        <addForeignKeyConstraint baseColumnNames="contributions_id"
+                                 baseTableName="person_contribution"
+                                 constraintName="fk_person_contribution_contributions_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contribution"/>
+        
+        <addForeignKeyConstraint baseColumnNames="people_id"
+                                 baseTableName="person_whipround"
+                                 constraintName="fk_person_whipround_people_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+        <addForeignKeyConstraint baseColumnNames="whiprounds_id"
+                                 baseTableName="person_whipround"
+                                 constraintName="fk_person_whipround_whiprounds_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="whipround"/>
+        
+    </changeSet>
+</databaseChangeLog>
